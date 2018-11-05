@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+    <style>div{width: 60vw;background-color: silver;margin: auto;padding: 15px;}</style>
+
+
+<div>
+    {% for category in categories %}
+        <h1>{{ category.name }}</h1>
+        {% for article in category.articles %}
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.content }}</p>
+            {% endfor %}
+        <br>
+        <hr><br>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
