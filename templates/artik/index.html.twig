@@ -7,9 +7,9 @@
 
 
 <div>
-    {% for category in categories %}
-        <h1>{{ category.name }}</h1>
-        {% for article in category.articles %}
+    {% for category in resultats %}
+        <h1>{{ category.owner.name }}</h1>
+        {% for article in category %}
             <h3>{{ article.title }}</h3>
             <p>{{ article.content }}</p>
             {% endfor %}

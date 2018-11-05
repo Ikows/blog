@@ -22,12 +22,15 @@ class ArtikController extends AbstractController
             {
                 $category->addArticle($article);
             }
+
+            $resultats[] = $category->getArticles();
         }
 
 
         return $this->render('artik/index.html.twig', [
             'controller_name' => 'ArtikController',
-            'categories' => $categories
+            'categories' => $categories,
+            'resultats' => $resultats
         ]);
     }
 }
