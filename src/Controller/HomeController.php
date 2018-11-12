@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class HomeController extends AbstractController
 {
     /**
-     * @route ("/")
+     * @route ("/home", name = "homepage")
      * @return Response
      */
     public function index()
