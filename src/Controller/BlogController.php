@@ -17,14 +17,14 @@ class BlogController extends AbstractController
     /**
      * Show all row from article's entity
      *
-     * @Route("/", name="blog_index")
+     * @Route("/blog", name="blog_index")
      * @return Response A response instance
      */
     public function index() : Response
     {
 
 
-        /*$articles = $this->getDoctrine()
+        $articles = $this->getDoctrine()
             ->getRepository(Article::class)
             ->findAll();
 
@@ -34,17 +34,6 @@ class BlogController extends AbstractController
             );
         }
 
-        return $this->render(
-            'blog/index.html.twig',
-            ['articles' => $articles]
-        );*/
-
-
-        $form = $this->createForm(
-            ArticleSearchType::class,
-            null,
-            ['method' => Request::METHOD_GET]
-        );
 
         $form = $this->createForm(
             ArticleSearchType::class,
