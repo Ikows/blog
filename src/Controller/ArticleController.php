@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Repository\ArticleRepository;
+use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +15,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article", name="article")
      */
-    public function index(Request $request)
+    public function index(Request $request, Slugify $slugify)
     {
 
         $article = new Article();
@@ -23,6 +25,8 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() AND $form->isValid())
         {
             $article = $form->getData();
+            $article->setSlug($slugify->generate($article->getTitle()));
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
