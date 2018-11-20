@@ -35,18 +35,4 @@ class ArtikController extends AbstractController
             'resultats' => $resultats
         ]);
     }
-
-    /**
-     * @Route("article/{article}", name="article_show")
-     * @param Article $article
-     * @return Response
-     */
-    public function showArticle(Article $article): Response
-    {
-        $tags = $article->getTags();
-        return $this->render('artik/show.html.twig', [
-            'tags' => $tags,
-            'article' => $article
-        ]);
-    }
 }
